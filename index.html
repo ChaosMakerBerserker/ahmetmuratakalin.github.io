@@ -3,42 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmet Murat Akalın | Personal Portfolio</title>
+    <title>Ahmet Murat Akalın - Game Developer & QA Tester</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-        body {
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2.5rem;
+        }
+
+        /* SOL SABİT PROFİL PANELDİR (SIDEBAR) */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
             text-align: center;
         }
-        .container {
-            padding: 2rem;
-            max-width: 600px;
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #818cf8);
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            border: 3px solid var(--accent-color);
         }
-        h1 {
-            font-size: 2.5rem;
-            color: #38bdf8;
+
+        .sidebar h1 {
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
-        p {
-            font-size: 1.2rem;
-            color: #94a3b8;
+
+        .sidebar .tagline {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar .bio {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .contact-info {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            width: 18px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-btn:hover {
+            background: var(--accent-color);
+            color: #0f172a;
+            transform: translateY(-3px);
+        }
+
+        /* SAĞ AKAN İÇERİK BÖLÜMÜ (MAIN CONTENT) */
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        /* Rozetler / Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* Deneyim & Eğitim Zaman Çizelgesi */
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0.3rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-color);
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .timeline-subtitle {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive / Mobil Uyumlu */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Ahmet Murat Akalın</h1>
-        <p>Personal Portfolio</p>
+        <!-- SOL PANEL -->
+        <aside class="sidebar">
+            <div class="profile-img">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <h1>Ahmet Murat Akalın</h1>
+            <p class="tagline">Game Developer & Software QA Tester</p>
+            
+            <p class="bio">
+                Grafik tasarım altyapısını Unity ve C# ile birleştirerek oyun geliştirme ve yazılım kalitesini artırma üzerine odaklanan QA uzmanı.
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Beykoz Üniversitesi Mezunu</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>İstanbul, Türkiye</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/ChaosMakerBerserker" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:example@email.com" class="social-btn" title="E-Posta"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </aside>
+
+        <!-- SAĞ İÇERİK -->
+        <main class="content">
+            
+            <!-- HAKKIMDA -->
+            <section class="section-card">
+                <h2 class="section-title"><i class="fa-solid fa-user"></i> Hakkımda</h2>
+                <p style="color: var(--text-secondary);">
+                    Grafik Tasarım lisans eğitimimi tamamladıktan sonra yazılım kalitesi ve oyun geliştirme alanlarında kendimi uzmanlaştırdım. Unity ile oyun mekanikleri kurgulama, C# ile script mimarileri oluşturma ve yazılım ürünlerinde QA test süreçlerini yönetme konusunda yetkinliğe sahibim.
+                </p>
+            </section>
+
+            <!-- YETENEKLER & UZMANLIKLAR -->
+            <section class="section-card">
+                <h2 class="section-title"><i class="fa-solid fa-code"></i> Yetenekler & Araçlar</h2>
+                <div class="skills-grid">
+                    <span class="skill-badge">Unity Engine</span>
+                    <span class="skill-badge">C# Programming</span>
+                    <span class="skill-badge">Software QA & Testing</span>
+                    <span class="skill-badge">Bug Reporting</span>
+                    <span class="skill-badge">Git & GitHub</span>
+                    <span class="skill-badge">Adobe After Effects</span>
+                    <span class="skill-badge">Graphic Design</span>
+                    <span class="skill-badge">Typography</span>
+                </div>
+            </section>
+
+            <!-- SERTİFİKALAR & BAŞARILAR -->
+            <section class="section-card">
+                <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Sertifikalar & Rozetler</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">Unity Junior Programmer Pathway</div>
+                    <div class="timeline-subtitle">Unity Learn / Credly Badge</div>
+                    <div class="timeline-desc">C# programlama, oyun döngüleri, fizik sistemleri ve Unity editör araçları üzerinde uzmanlık onaylı sertifika.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Software QA Tester Certificate</div>
+                    <div class="timeline-subtitle">Mobil & Masaüstü Uygulama Testi</div>
+                    <div class="timeline-desc">Yazılım test süreçleri, hata raporlama (bug reporting), test senaryoları ve kullanıcı deneyimi analizi.</div>
+                </div>
+            </section>
+
+            <!-- EĞİTİM GEÇMİŞİ -->
+            <section class="section-card">
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Eğitim</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">Beykoz Üniversitesi</div>
+                    <div class="timeline-subtitle">Grafik Tasarım Bölümü</div>
+                    <div class="timeline-desc">Visual design, tipografi ve dijital medya tasarımı üzerine tamamlanmış lisans eğitimi.</div>
+                </div>
+            </section>
+
+        </main>
     </div>
+
 </body>
 </html>
