@@ -388,13 +388,15 @@
 
             <!-- Oyun İçi Oynanış / Video Bölümü -->
             <section class="card">
-                <h2 class="card-title"><i class="fa-solid fa-gamepad"></i> Crowd Runner Oyun Oynanış Videosu</h2>
-                <video controls width="100%" style="border-radius: 8px; border: 1px solid var(--border-color);">
-                    <source src="https://github.com/ChaosMakerBerserker/ahmetmuratakalin.github.io/releases/download/v1.0.0/Crowd.Runner.Gameplay.Video.mp4" type="video/mp4">
-                </video>
-            </section>
-            <script>
-    // Ses seviyesini 0.2 (yarım ses) olarak ayarlıyoruz
+    <h2 class="card-title"><i class="fa-solid fa-gamepad"></i> Crowd Runner Oyun Oynanış Videosu</h2>
+    <!-- id="gameVideo" buraya eklendi -->
+    <video id="gameVideo" controls width="100%" style="border-radius: 8px; border: 1px solid var(--border-color);">
+        <source src="https://github.com/ChaosMakerBerserker/ahmetmuratakalin.github.io/releases/download/v1.0.0/Crowd.Runner.Gameplay.Video.mp4" type="video/mp4">
+    </video>
+</section>
+
+<script>
+    // Ses seviyesini %20 (0.2) olarak ayarlıyoruz
     document.getElementById('gameVideo').volume = 0.2;
 </script>
             <!-- Sertifikalar -->
